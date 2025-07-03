@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Calorie Tracker</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <header class="header">
+          <h1 class="title">
+            <span class="title-line">AI CALORIE</span>
+            <span class="title-line">TRACKER</span>
+          </h1>
+        </header>
+
+        <main class="main">
+          <div class="upload-section">
+            <button class="upload-btn" id="uploadBtn">
+              <span class="upload-text">Upload Meal Pic</span>
+              <div class="plate-icon">
+                <div class="plate">
+                  <div class="food-item"></div>
+                  <div class="food-item"></div>
+                  <div class="food-item"></div>
+                </div>
+              </div>
+            </button>
+          </div>
+
+          <div class="results-section" id="results">
+            <div class="total-calories">
+              <div class="calorie-number" id="totalCalories">540</div>
+              <div class="calorie-unit">kcal</div>
+            </div>
+
+            <div class="food-breakdown">
+              <div class="food-item-row">
+                <span class="food-name">Chicken</span>
+                <span class="food-calories">230 kcal</span>
+              </div>
+              <div class="food-item-row">
+                <span class="food-name">Rice</span>
+                <span class="food-calories">200 kcal</span>
+              </div>
+              <div class="food-item-row">
+                <span class="food-name">Broccoli</span>
+                <span class="food-calories">110 kcal</span>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    
+  </body>
+</html>
