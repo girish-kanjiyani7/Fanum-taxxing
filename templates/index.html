@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Calorie Tracker</title>
     
@@ -31,36 +30,24 @@
                 </div>
               </div>
             </button>
+            <!-- Hidden file input, triggered by the upload button -->
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
           </div>
 
-          <div class="results-section" id="results">
+          <div class="results-section" id="results" style="display: none;">
             <div class="total-calories">
-              <div class="calorie-number" id="totalCalories">540</div>
+              <div class="calorie-number" id="totalCalories">0</div>
               <div class="calorie-unit">kcal</div>
             </div>
 
-            <div class="food-breakdown">
-              <div class="food-item-row">
-                <span class="food-name">Chicken</span>
-                <span class="food-calories">230 kcal</span>
-              </div>
-              <div class="food-item-row">
-                <span class="food-name">Rice</span>
-                <span class="food-calories">200 kcal</span>
-              </div>
-              <div class="food-item-row">
-                <span class="food-name">Broccoli</span>
-                <span class="food-calories">110 kcal</span>
-              </div>
+            <div class="food-breakdown" id="foodBreakdown">
+              <!-- Food items will be dynamically added here -->
             </div>
           </div>
         </main>
       </div>
     </div>
 
-    <input type="file" id="fileInput" accept="image/*" style="display: none;">
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-    
   </body>
 </html>

@@ -12,10 +12,11 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html")  # Render an HTML page where users upload files
 
 @app.route("/upload", methods=["POST"])
 def upload():
+    # Check if the 'image' part is in the request files
     if "image" not in request.files:
         return jsonify({"error": "No image part"}), 400
 
@@ -23,19 +24,19 @@ def upload():
     if file.filename == "":
         return jsonify({"error": "No selected file"}), 400
 
+    # Secure the filename
     filename = secure_filename(file.filename)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    file.save(filepath)
+    file.save(filepath)  # Save the uploaded file to the 'uploads' directory
 
-    # Analyze with Gemini AI
+    # Analyze the image with the Gemini AI
     try:
-        result = analyze_food_image(filepath)
-        return jsonify(result)
+        result = analyze_food_image(filepath)  # Call your function for analysis
+        return jsonify(result)  # Return the analysis as JSON
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
     import os
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))  # Railway assigns a dynamic port
     app.run(host="0.0.0.0", port=port)
-
